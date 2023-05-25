@@ -4,6 +4,9 @@ import Header from "./Components/Header"
 import FeedbackData from "./data/FeedbackData"
 import FeedbackList from "./Components/FeedbackList"
 import FeedbackForm  from"./Components/FeedbackForm"
+import AboutPage from "./pages/AboutPage"
+import { BrowserRouter, BrowserRouter as Router,Route,Routes } from "react-router-dom"
+import AboutIconLink from "./Components/AboutIconLink"
 import FeedbackStats from "./Components/FeedbackStats"
 function App(){
 
@@ -26,15 +29,27 @@ setFeedback([newFeedback,...feedback])
 }
 
  return(
-    <>
-    <Header />
-    <div className="container">
-   <FeedbackForm handleAdd={addFeedback}/>
+  <Router>
+  <Header />
+  <div className='container'>
+    <Routes>
+      <Route
+        path='/'
+        element={
+          <>
+            <FeedbackForm handleAdd={addFeedback}/>
    <FeedbackStats feedback={feedback} />
-   <FeedbackList feedback={feedback} handleDelete={deleteFeedback}/>
+   <FeedbackList feedback={feedback} handleDelete={deleteFeedback}/> 
 
-     </div>
-     </>
+          </>
+        }
+      ></Route>
+
+      <Route path='/about' element={<AboutPage />} />
+    </Routes>
+        <AboutIconLink/>
+  </div>
+</Router>
  )
  
 }
