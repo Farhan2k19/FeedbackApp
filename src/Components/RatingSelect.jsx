@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 function RatingSelect({select}) {
 
-    const[selected,setSelected]=useState(5)
+    const[selected,setSelected]=useState(10)
 
     const handleChange=(e)=>{
           setSelected(+e.currentTarget.value)  
@@ -15,7 +15,7 @@ function RatingSelect({select}) {
 <li>
     <input
     type='radio'
-    id='num1'
+    id='num1' 
     name='rating'
     value='1'
     onChange={handleChange}
