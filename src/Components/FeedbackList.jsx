@@ -1,5 +1,6 @@
 import React from 'react'
 import FeedbackItem from './FeedbackItem'
+import ReactPropTypes from 'prop-types'
 
 function FeedbackList({feedback}) {
 
@@ -19,5 +20,6 @@ return (
     </div>
   )
 }
+
 
 export default FeedbackList
