@@ -5,7 +5,22 @@ import Button from './shared/Button'
 function FeedbackForm() {
 
     const [text,setText]=useState('')
+    const [btnD,btnDSet]=useState(true)
+    const [msg,setM]=useState('')
     const handleText=(e)=>{
+
+        if(text==''){
+            btnDSet(true)
+            setM(null)
+        }
+        else if(text!==''&& text.trim().length<=10){
+            setM("Text must be at least 10 char")
+            btnDSet(true)
+        }
+        else{
+            setM(null)
+            btnDSet(false)
+        }
         setText(e.target.value)
 
 
@@ -18,15 +33,17 @@ function FeedbackForm() {
             How would you rate this service?
 
         </h2>
+        {}
         {
             <div className="input-group">
                 <input onChange={handleText}htype='text' placeholder='Write a review' value={text}/>
-                <Button type='submit'>send</Button>
+                <Button type='submit' isDisabled={btnD}>send</Button>
             </div>
         }
 
-
-      </form>
+      {msg &&  <div className="message">{msg}</div>
+}
+              </form>
     </Card>
   )
 }
