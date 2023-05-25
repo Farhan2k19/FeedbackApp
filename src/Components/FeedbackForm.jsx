@@ -2,10 +2,12 @@ import React from 'react'
 import Card from './shared/Card'
 import { useState } from 'react'
 import Button from './shared/Button'
+import RatingSelect from './RatingSelect'
 function FeedbackForm() {
 
     const [text,setText]=useState('')
     const [btnD,btnDSet]=useState(true)
+    const[rating,setRating]=useState(10)
     const [msg,setM]=useState('')
     const handleText=(e)=>{
 
@@ -33,7 +35,8 @@ function FeedbackForm() {
             How would you rate this service?
 
         </h2>
-        {}
+        <RatingSelect select={(rating)=>setRating(rating)}/>
+
         {
             <div className="input-group">
                 <input onChange={handleText}htype='text' placeholder='Write a review' value={text}/>
